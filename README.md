@@ -1,1 +1,1 @@
-# formation-lanceur
+# projet-initial
