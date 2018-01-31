@@ -1,5 +1,7 @@
 package org.usfirst.frc.equipe5910.robot;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 /**
@@ -10,7 +12,15 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class RobotControleur extends IterativeRobot {
+	public static final int LANCEUR_MOTEUR_PRINCIPAL = 3;
+	public static final int LANCEUR_MOTEUR_ESCLAVE = 0;
 
+	CANTalon lanceurMoteurPrincipal = new CANTalon(LANCEUR_MOTEUR_PRINCIPAL);
+	CANTalon lanceurMoteurEsclave = new CANTalon(LANCEUR_MOTEUR_ESCLAVE);
+	
+	double vitesseLanceur = 1.0;
+	
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -27,6 +37,7 @@ public class RobotControleur extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		System.out.println("autonomousInit()");
+    	lanceurMoteurPrincipal.set(vitesseLanceur);	// lancer	
 	}
 
 	/**
@@ -44,6 +55,7 @@ public class RobotControleur extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		System.out.println("teleopInit()");
+    	lanceurMoteurPrincipal.set(0); // arreter
 	}
 
 	/**
